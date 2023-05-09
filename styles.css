@@ -1,0 +1,137 @@
+/* убираем отступы по умолчанию */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* задаем цвет фона */
+body {
+    background-color: #f8f9fa;
+}
+
+/* центрируем контейнер */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* добавляем отступы между элементами */
+.mt-5 {
+    margin-top: 3rem !important;
+}
+
+/* изменяем шрифт для заголовков */
+h1, h2 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* изменяем отступы для заголовков */
+h1 {
+    margin-bottom: 2rem;
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+}
+
+/* изменяем цвет фона для форм */
+.form-control {
+    background-color: #fff;
+}
+
+/* добавляем отступы для кнопок */
+.btn {
+    margin-top: 1rem;
+    margin-right: 1rem;
+}
+
+/* изменяем цвет для кнопок */
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+/* изменяем цвет для таблицы */
+.table {
+    background-color: #fff;
+}
+
+/* изменяем цвет для заголовков таблицы */
+.table thead {
+    background-color: #f8f9fa;
+}
+
+/* изменяем цвет для активных кнопок */
+.table .btn:active {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.table .btn:focus {
+    box-shadow: none;
+}
+
+/* добавляем отступы для таблицы */
+.table {
+    margin-bottom: 2rem;
+}
+
+/* изменяем размер текста для таблицы */
+.table th,
+.table td {
+    font-size: 1rem;
+}
+
+/* убираем рамку для последнего элемента в строке таблицы */
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* добавляем отступы для баланса */
+#balance {
+    font-size: 1.25rem;
+    margin-top: 0.5rem;
+}
+
+#balance-message {
+    margin-top: 0.5rem;
+}
+
+/* изменяем отступы для строк таблицы */
+.table td,
+.table th {
+    vertical-align: middle;
+}
+
+/* изменяем размер таблицы для маленьких экранов */
+@media (max-width: 768px) {
+    .table-responsive-sm {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table-responsive-sm > .table {
+        margin-bottom: 0;
+    }
+
+    .table-responsive-sm > .table-bordered {
+        border: 0;
+    }
+}
