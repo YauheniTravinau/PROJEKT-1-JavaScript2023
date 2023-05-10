@@ -16,8 +16,8 @@ body {
 }
 
 /* добавляем отступы между элементами */
-.mt-5 {
-    margin-top: 3rem !important;
+.my-5 {
+    margin-top: 3rem;
 }
 
 /* изменяем шрифт для заголовков */
@@ -103,12 +103,12 @@ h2 {
 }
 
 /* добавляем отступы для баланса */
-#balance {
+.balance {
     font-size: 1.25rem;
     margin-top: 0.5rem;
 }
 
-#balance-message {
+.balance-message {
     margin-top: 0.5rem;
 }
 
@@ -126,7 +126,6 @@ h2 {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
     }
-
     .table-responsive-sm > .table {
         margin-bottom: 0;
     }

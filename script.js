@@ -62,9 +62,10 @@ function displayIncomeList() {
     }
 }
 
+ // Funkcja Edit: obsługuje edycję wpisu
 function Edytuj(index, list, displayFunction) {
-    let newName = prompt("Podaj nowa nazwe:");
-    let newAmount = prompt("Podaj nowa kwote:");
+    const newName = prompt("Podaj nowa nazwe:");
+    const newAmount = prompt("Podaj nowa kwote:");
 
     // sprawdzenie, czy pole jest puste
     if (newName.trim() === "" || newAmount.trim() === "") {
@@ -114,18 +115,18 @@ function displayExpenseList() {
 // Funkcja aktualizująca stan bilansu, aktualizująca wartości i wyświetlająca informacje o bilansie
 function updateBalance() {
 // Pobierz elementy DOM reprezentujące wartości całkowite przychodów i wydatków
-    let incomeTotal = document.getElementById("income-total");
-    let expenseTotal = document.getElementById("expense-total");
+    const incomeTotal = document.getElementById("income-total");
+    const expenseTotal = document.getElementById("expense-total");
     // Oblicz i wyświetl wartości całkowite przychodów i wydatków
     incomeTotal.textContent = calculateIncomeTotal().toFixed(2);
     expenseTotal.textContent = calculateExpenseTotal().toFixed(2);
 
 // Oblicz i wyświetl bilans
-    let totalIncome = calculateIncomeTotal();
-    let totalExpense = calculateExpenseTotal();
-    let balanceAmount = totalIncome - totalExpense;
-    let balanceMessage = document.getElementById("balance-message");
-    let balance = document.getElementById("balance");
+    const totalIncome = calculateIncomeTotal();
+    const totalExpense = calculateExpenseTotal();
+    const balanceAmount = totalIncome - totalExpense;
+    const balanceMessage = document.getElementById("balance-message");
+    const balance = document.getElementById("balance");
 
     balance.textContent = balanceAmount.toFixed(2);
 
@@ -149,13 +150,12 @@ function updateBalance() {
 // Funkcja obsługująca przesyłanie formularza z wpływami
 incomeForm.addEventListener("submit", function (event) {
     event.preventDefault();
-    let nameInput = document.getElementById("income-name");
-    let amountInput = document.getElementById("income-amount");
+    const nameInput = document.getElementById("income-name");
+    const amountInput = document.getElementById("income-amount");
+    const name = nameInput.value.trim();
+    const amount = parseFloat(amountInput.value);
 
-    let name = nameInput.value;
-    let amount = parseFloat(amountInput.value);
-
-    if (name && amount) {
+    if (name !== "" && !isNaN(amount) && amount > 0) {
         addIncomeToList(name, amount);
         nameInput.value = "";
         amountInput.value = "";
@@ -164,16 +164,16 @@ incomeForm.addEventListener("submit", function (event) {
         updateBalance();
     }
 });
+
 // Funkcja obsługująca przesyłanie formularza z wydatkami
 expenseForm.addEventListener("submit", function (event) {
     event.preventDefault();
-    let nameInput = document.getElementById("expense-name");
-    let amountInput = document.getElementById("expense-amount");
+    const nameInput = document.getElementById("expense-name");
+    const amountInput = document.getElementById("expense-amount");
+    const name = nameInput.value.trim();
+    const amount = parseFloat(amountInput.value);
 
-    let name = nameInput.value;
-    let amount = parseFloat(amountInput.value);
-
-    if (name && amount) {
+    if (name !== "" && !isNaN(amount) && amount > 0) {
         addExpenseToList(name, amount);
         nameInput.value = "";
         amountInput.value = "";
