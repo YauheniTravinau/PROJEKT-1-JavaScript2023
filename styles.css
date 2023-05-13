@@ -1,31 +1,31 @@
-/* убираем отступы по умолчанию */
+/* usuwamy domyślne marginesy */
 body {
     margin: 0;
     padding: 0;
 }
 
-/* задаем цвет фона */
+/* ustawiamy kolor tła */
 body {
     background-color: #f8f9fa;
 }
 
-/* центрируем контейнер */
+/* wyśrodkowujemy kontener */
 .container {
     max-width: 800px;
     margin: 0 auto;
 }
 
-/* добавляем отступы между элементами */
+/* dodajemy marginesy między elementami */
 .my-5 {
     margin-top: 3rem;
 }
 
-/* изменяем шрифт для заголовков */
+/* zmieniamy czcionkę dla nagłówków */
 h1, h2 {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-/* изменяем отступы для заголовков */
+/* zmieniamy marginesy dla nagłówków */
 h1 {
     margin-bottom: 2rem;
 }
@@ -34,18 +34,18 @@ h2 {
     margin-bottom: 1.5rem;
 }
 
-/* изменяем цвет фона для форм */
+/* zmieniamy kolor tła dla formularzy */
 .form-control {
     background-color: #fff;
 }
 
-/* добавляем отступы для кнопок */
+/* dodajemy marginesy dla przycisków */
 .btn {
     margin-top: 1rem;
     margin-right: 1rem;
 }
 
-/* изменяем цвет для кнопок */
+/* zmieniamy kolor dla przycisków */
 .btn-success {
     background-color: #28a745;
     border-color: #28a745;
@@ -66,17 +66,17 @@ h2 {
     border-color: #bd2130;
 }
 
-/* изменяем цвет для таблицы */
+/* zmieniamy kolor dla tabeli */
 .table {
     background-color: #fff;
 }
 
-/* изменяем цвет для заголовков таблицы */
+/* zmieniamy kolor dla nagłówków tabeli */
 .table thead {
     background-color: #f8f9fa;
 }
 
-/* изменяем цвет для активных кнопок */
+/* zmieniamy kolor dla aktywnych przycisków */
 .table .btn:active {
     background-color: #007bff;
     border-color: #007bff;
@@ -86,23 +86,23 @@ h2 {
     box-shadow: none;
 }
 
-/* добавляем отступы для таблицы */
+/* dodajemy marginesy dla tabeli */
 .table {
     margin-bottom: 2rem;
 }
 
-/* изменяем размер текста для таблицы */
+/* zmieniamy rozmiar tekstu dla tabeli */
 .table th,
 .table td {
     font-size: 1rem;
 }
 
-/* убираем рамку для последнего элемента в строке таблицы */
+/* usuwamy ramkę dla ostatniego elementu w wierszu tabeli */
 .table tbody tr:last-child td {
     border-bottom: none;
 }
 
-/* добавляем отступы для баланса */
+/* dodajemy marginesy dla salda */
 .balance {
     font-size: 1.25rem;
     margin-top: 0.5rem;
@@ -112,13 +112,13 @@ h2 {
     margin-top: 0.5rem;
 }
 
-/* изменяем отступы для строк таблицы */
+/* zmieniamy marginesy dla wierszy tabeli */
 .table td,
 .table th {
     vertical-align: middle;
 }
 
-/* изменяем размер таблицы для маленьких экранов */
+/* zmieniamy rozmiar tabeli dla małych ekranów */
 @media (max-width: 768px) {
     .table-responsive-sm {
         display: block;
@@ -129,7 +129,6 @@ h2 {
     .table-responsive-sm > .table {
         margin-bottom: 0;
     }
-
     .table-responsive-sm > .table-bordered {
         border: 0;
     }
