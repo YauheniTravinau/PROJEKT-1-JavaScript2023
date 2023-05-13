@@ -42,74 +42,107 @@ function calculateExpenseTotal() {
 
 // Funkcja wyświetlająca listę przychodów
 function displayIncomeList() {
-    incomeTable.innerHTML = "";
+    while (incomeTable.firstChild) {
+        incomeTable.firstChild.remove();
+    }
+
     for (let i = 0; i < incomeList.length; i++) {
-        let row = `
-      <tr>
-        <td>${incomeList[i].name}</td>
-        <td>${incomeList[i].amount} zl</td>
-        <td>
-          <button class="btn btn-sm btn-warning edit-income" data-index="${i}" onclick="Edytuj(${i}, incomeList, displayIncomeList)">
-           Edytuj
-          </button>
-          <button class="btn btn-sm btn-danger delete-income" data-index="${i}">
-            Usun
-          </button>
-        </td>
-      </tr>
-    `;
-        incomeTable.innerHTML += row;
+        const row = createTableRow(
+            incomeList[i].name,
+            incomeList[i].amount,
+            i,
+            "income"
+        );
+        incomeTable.appendChild(row);
     }
 }
 
- // Funkcja Edit: obsługuje edycję wpisu
-function Edytuj(index, list, displayFunction) {
-    const newName = prompt("Podaj nowa nazwe:");
-    const newAmount = prompt("Podaj nowa kwote:");
+// Funkcja edytująca: obsługuje edycję wpisu
+function editEntry(index, list, displayFunction) {
+    const newName = prompt("Podaj nowa nazwe:", list[index].name);
+    const newAmount = prompt("Podaj nowa kwote:", list[index].amount);
 
-    // sprawdzenie, czy pole jest puste
+    // Sprawdzenie, czy pole jest puste
     if (newName.trim() === "" || newAmount.trim() === "") {
         alert("Nazwa i kwota nie mogą byc puste!");
         return;
     }
 
-    // sprawdzenie poprawności wprowadzonej liczby
+    // Sprawdzenie poprawności wprowadzonej liczby
     if (isNaN(parseFloat(newAmount))) {
         alert("Podana kwota jest nieprawidlowa!");
         return;
     }
 
-    // aktualizacja wartości w tablicy
+    // Aktualizacja wartości w tablicy
     list[index].name = newName;
     list[index].amount = parseFloat(newAmount);
 
-    // odświeżenie tabeli
+    // Odświeżenie tabeli
     displayFunction();
 
-    // aktualizacja salda
+    // Aktualizacja salda
     updateBalance();
 }
 
 // Funkcja wyświetlająca listę wydatków
 function displayExpenseList() {
-    expenseTable.innerHTML = "";
-    for (let i = 0; i < expenseList.length; i++) {
-        let row = `
-      <tr>
-        <td>${expenseList[i].name}</td>
-        <td>${expenseList[i].amount} zl</td>
-        <td>
-          <button class="btn btn-sm btn-warning edit-expense" data-index="${i}" onclick="Edytuj(${i}, expenseList, displayExpenseList)">
-           Edytuj
-          </button>
-          <button class="btn btn-sm btn-danger delete-expense" data-index="${i}">
-            Usun
-          </button>
-        </td>
-      </tr>
-    `;
-        expenseTable.innerHTML += row;
+    while (expenseTable.firstChild) {
+        expenseTable.firstChild.remove();
     }
+
+    for (let i = 0; i < expenseList.length; i++) {
+        const row = createTableRow(
+            expenseList[i].name,
+            expenseList[i].amount,
+            i,
+            "expense"
+        );
+        expenseTable.appendChild(row);
+    }
+}
+
+// Funkcja tworząca wiersz tabeli
+function createTableRow(name, amount, index, type) {
+    const row = document.createElement("tr");
+    const nameCell = document.createElement("td");
+    const amountCell = document.createElement("td");
+    const actionCell = document.createElement("td");
+    const editButton = document.createElement("button");
+    const deleteButton = document.createElement("button");
+
+    nameCell.textContent = name;
+    amountCell.textContent = `${amount.toFixed(2)} zl`;
+
+    editButton.classList.add("btn", "btn-sm", "btn-warning");
+    editButton.textContent = "Edytuj";
+    editButton.dataset.index = index;
+    editButton.addEventListener("click", function () {
+        editEntry(index, type === "income" ? incomeList : expenseList, type === "income" ? displayIncomeList : displayExpenseList);
+    });
+
+    deleteButton.classList.add("btn", "btn-sm", "btn-danger");
+    deleteButton.textContent = "Usun";
+    deleteButton.dataset.index = index;
+    deleteButton.addEventListener("click", function () {
+        deleteEntry(index, type === "income" ? incomeList : expenseList, type === "income" ? displayIncomeList : displayExpenseList);
+    });
+
+    // Funkcja usuwająca wpis z listy
+    function deleteEntry(index, list, displayList) {
+        list.splice(index, 1);
+        displayList();
+        updateBalance();
+    }
+
+    actionCell.appendChild(editButton);
+    actionCell.appendChild(deleteButton);
+
+    row.appendChild(nameCell);
+    row.appendChild(amountCell);
+    row.appendChild(actionCell);
+
+    return row;
 }
 
 // Funkcja aktualizująca stan bilansu, aktualizująca wartości i wyświetlająca informacje o bilansie
